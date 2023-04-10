@@ -5,3 +5,4 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     vehicle_number = fields.Char()
+    po_number = fields.Char(string="PO Number")

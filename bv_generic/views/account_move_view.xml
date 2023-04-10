@@ -7,8 +7,12 @@
         <field name="arch" type="xml">
             <field name="edi_state" position="after">
                 <field name="vehicle_number"/>
-                <field name="sequence_number"/>
-                <field name="sequence_prefix"/>
+                <field
+                        name="po_number"
+                        attrs="{
+                            'invisible':[('move_type','in',('in_receipt', 'in_refund', 'in_invoice', 'entry'))]
+                            }"
+                />
             </field>
         </field>
     </record>

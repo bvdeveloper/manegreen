@@ -15,8 +15,9 @@
 
     'data': [
         'security/ir.model.access.csv',
-        'views/report_invoice.xml',
         'views/account_move_view.xml',
+        'views/report_invoice.xml',
+        'views/res_partner.xml',
     ],
 
     'license': 'LGPL-3',
