@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template
+            id="bv_inherited_report_purchaseorder_document"
+            inherit_id="purchase.report_purchaseorder_document"
+    >
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_description"><strong>Product name</strong></th>
+        </xpath>
+    </template>
+</odoo>

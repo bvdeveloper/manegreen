@@ -66,7 +66,7 @@ class AccountTax(models.Model):
                 'tax_group_base_amount': tax_group_vals['base_amount'],
                 'formatted_tax_group_amount': formatLang(self.env, tax_group_vals['tax_amount'], currency_obj=currency),
                 'formatted_tax_group_base_amount': formatLang(self.env, tax_group_vals['base_amount'], currency_obj=currency),
-                'tax_percentage': (tax_group_vals['tax_amount']*100)/tax_group_vals['base_amount'] if tax_group_vals['tax_amount'] else 0.0,
+                'tax_percentage':  round((tax_group_vals['tax_amount']*100)/tax_group_vals['base_amount'], 2) if tax_group_vals['tax_amount'] else 0.0,
             })
 
         # ==== Build the final result ====

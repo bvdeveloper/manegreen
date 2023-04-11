@@ -10,5 +10,9 @@
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "depends": ["web", "account", "base"],
-    "data": ["views/ir_actions_report.xml", "data/config_parameter.xml"],
+    "data": [
+        "views/ir_actions_report.xml",
+        "data/config_parameter.xml",
+        "views/account_report.xml"
+    ],
 }

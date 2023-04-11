@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template
+                id="bv_inherited_journal_entry_template_report_view"
+                inherit_id="bi_print_journal_entries.journal_entry_template_report_view"
+        >
+            <xpath expr="//div[hasclass('page')]" position="after">
+                <br/>
+                <table border="0" style="width:100%;margin:0px auto;background:white;border:0px solid #ffffff;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.5rem"><strong>Created By: </strong></td>
+                            <td style="padding:0.5rem"><p t-field="o.create_uid"/></td>
+                            <td style="padding:0.5rem"><strong>Checked By :</strong></td>
+                            <td style="padding:0.5rem"><p t-field="o.checked_by"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.5rem"><strong>Verified By :</strong></td>
+                            <td style="padding:0.5rem"><p t-field="o.verified_by"/></td>
+                            <td style="padding:0.5rem"><strong>Authorise signature :</strong></td>
+                            <td style="padding:0.5rem"><p t-field="o.auth_sign"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+        </template>
+    </data>
+</odoo>
