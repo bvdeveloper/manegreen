@@ -11,7 +11,7 @@
     'website': 'https://www.brainvire.com/',
     'category': 'Order Modules',
     'version': '16.0.0',
-    'depends': ['base', 'web', 'stock', 'stock_barcode', 'product', 'purchase', 'account', 'sign', 'bi_print_journal_entries'],
+    'depends': ['base', 'web', 'stock', 'stock_barcode', 'product', 'purchase', 'account', 'sign', 'bi_print_journal_entries', 'l10n_in'],
 
     'data': [
         'security/ir.model.access.csv',
