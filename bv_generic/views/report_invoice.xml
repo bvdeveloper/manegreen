@@ -64,19 +64,22 @@
     <template id="address_layout_inherit" inherit_id="web.address_layout">
         <xpath expr="//t[@t-if='address']" position="replace">
             <t t-if="address">
-                <div class="address col">
+                <div class="address col" style="margin-top: 8.75rem !important;">
                     <t t-if="address">
-                        <div name="address" class="col mt-5">
-                            <t t-esc="address"/>
-                            <div name="pan_number">
-                                <span t-field="o.partner_id.pan_card"/>
+                        <div name="address" class="col mt-4">
+                            <span t-if="address">
+                                <strong>Billing Address: </strong>
+                                <t t-esc="address"/>
+                            </span>
+                            <div name="pan_number" t-if="o.partner_id.pan_card">
+                                <span><strong>Pan card Number:</strong> <span t-field="o.partner_id.pan_card"/></span>
                             </div>
                         </div>
                     </t>
 
                     <t t-if="information_block">
                         <t t-set="colclass" t-value="'col-5 offset-1'"/>
-                        <div name="information_block" class="col-6 mt-5">
+                        <div name="information_block" class="col-6 mt-4">
                             <t t-out="information_block"/>
                         </div>
                     </t>
@@ -95,6 +98,15 @@
                           t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                 </div>
             </div>
+        </xpath>
+    </template>
+
+    <template
+            id="l10n_in_report_invoice_document_inherit"
+            inherit_id="l10n_in.l10n_in_report_invoice_document_inherit"
+    >
+        <xpath expr="//span[@t-field='o.l10n_in_gstin']" position="attributes">
+            <attribute name="style">display:none;</attribute>
         </xpath>
     </template>
 </odoo>
