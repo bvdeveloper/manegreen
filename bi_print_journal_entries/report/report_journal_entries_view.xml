@@ -31,7 +31,7 @@
 							</tr>
 							<tr>
 								<td><strong>Narration :</strong></td>
-								<td colspan="3"></td>
+								<td colspan="3"><p t-field="o.comment"/></td>
 							</tr>
 						</tbody>
 					</table>
