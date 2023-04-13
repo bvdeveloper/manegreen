@@ -23,6 +23,7 @@
         'views/report_purchase_order.xml',
         'views/layouts.xml',
         'report/report_journal_entries_view.xml',
+        'report/purchase_order_templates.xml',
     ],
 
     'license': 'LGPL-3',
