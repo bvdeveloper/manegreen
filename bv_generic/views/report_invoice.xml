@@ -64,9 +64,9 @@
     <template id="address_layout_inherit" inherit_id="web.address_layout">
         <xpath expr="//t[@t-if='address']" position="replace">
             <t t-if="address">
-                <div class="address col" style="margin-top: 8.75rem !important;">
+                <div class="address col" style="margin-top: 7.75rem !important;">
                     <t t-if="address">
-                        <div name="address" class="col mt-4">
+                        <div name="address" class="col mt-3">
                             <span t-if="address">
                                 <strong>Billing Address: </strong>
                                 <t t-esc="address"/>
@@ -79,7 +79,7 @@
 
                     <t t-if="information_block">
                         <t t-set="colclass" t-value="'col-5 offset-1'"/>
-                        <div name="information_block" class="col-6 mt-4">
+                        <div name="information_block" class="col-6 mt-3">
                             <t t-out="information_block"/>
                         </div>
                     </t>
