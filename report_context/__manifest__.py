@@ -13,6 +13,7 @@
     "data": [
         "views/ir_actions_report.xml",
         "data/config_parameter.xml",
-        "views/account_report.xml"
+        "views/account_report.xml",
+        "views/report_invoice.xml"
     ],
 }

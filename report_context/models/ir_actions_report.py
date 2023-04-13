@@ -47,6 +47,8 @@ class IrActionsReport(models.Model):
             if any(x.move_type == 'entry' for x in invoices):
                 raise UserError(_("Only invoices could be printed."))
 
-        report = self._get_report(report_ref)
-        data["context"] = report.with_context(data.get("context", "{}"))._get_context()
+        if self._get_report(report_ref).report_name == 'report_context.transporter_account_invoices':
+            data['context'].update({'transporter_account_invoices': 1})
+        elif self._get_report(report_ref).report_name == 'report_context.triplicate_account_invoices':
+            data['context'].update({'triplicate_account_invoices': 1})
         return super(IrActionsReport, self)._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
