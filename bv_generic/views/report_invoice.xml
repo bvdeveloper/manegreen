@@ -17,7 +17,7 @@
                 <span><strong style="font-size:1rem;">Duplicate for Transporter</strong></span>
             </t>
             <t t-elif="context.get('triplicate_account_invoices')">
-                <span><strong style="font-size:1rem;">Triplicate for Customer</strong></span>
+                <span><strong style="font-size:1rem;">Triplicate for Supplier</strong></span>
             </t>
             <t t-else="">
                 <span><strong style="font-size:1rem;">Invoice For original Recipients</strong></span>
