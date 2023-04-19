@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <template id="invoice_report_amount_in_words_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[hasclass('clearfix')]" position="after">
+                 <div style="padding-top:20px; padding-bottom:20px;">
+                    <p><span><strong>Total (In Words): </strong></span><span t-field="o.amount_words"/></p>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='qrcode']" position="after">
+                <div class="row justify-content-end last-page"
+                     style="margin-top:0.75rem; font-size:14px;"
+                >
+                    <div class="col-12">
+                        <div class="row" t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')">
+<!--                            <div class="col-2"/>-->
+                            <div class="col-md-12" style="margin-bottom:45px;">
+                                <div class="row">
+                                    <table border="0" class="table table-sm o_main_table text-start">
+                                        <tr><td colspan="2"><strong>Bank Details: </strong></td></tr>
+                                        <tr>
+                                            <th>Account Name :</th>
+                                            <td>
+                                                <span t-field="o.company_id.bank_account_name"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Name :</th>
+                                            <td>
+                                                <span t-field="o.company_id.bank_name"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>IFSC Code :</th>
+                                            <td>
+                                                <span t-field="o.company_id.bank_ifsc_code"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Branch :</th>
+                                            <td>
+                                                <span t-field="o.company_id.bank_branch"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Branch Address :</th>
+                                            <td>
+                                                <span t-field="o.company_id.bank_branch_address"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="page-break-inside: avoid;">
+                            <div class="col-8"/>
+                            <div class="col-4">
+                                <div class="row justify-content-between" style="margin-bottom:45px; text-align:center;">
+                                    <p>For <span class="text-center" t-field="o.company_id.name"/></p>
+                                </div>
+                                <div class="row justify-content-between" style="margin-bottom:15px; text-align:center;">
+                                    <p><span class="text-center">Authorized Signatory</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+</odoo>

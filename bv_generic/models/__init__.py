@@ -3,4 +3,4 @@ from . import account_tax
 from . import res_partner
 from . import res_company
 from . import res_users
-
+from . import base_document_layout

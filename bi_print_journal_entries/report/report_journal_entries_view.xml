@@ -6,7 +6,7 @@
 		<template id="journal_entry_template_report_view">
 			<t t-call="web.external_layout">
 				<t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
-				<div class="page" style="margin-top: 5.75rem !important;">
+				<div class="page" style="margin-top: 5.75rem !important; font-size:14px;">
 					<br/>
 					<div class="oe_structure"/>
 					<div>

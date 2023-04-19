@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template
+            id="bv_inherit_report_saleorder_document"
+            inherit_id="sale.report_saleorder_document"
+    >
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="style">font-size:14px;</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]//h2" position="attributes">
+            <attribute name="style">font-size:18px;</attribute>
+        </xpath>
+        <!-- Table order -->
+        <xpath expr="//table" position="attributes">
+            <attribute name="class">table table-sm o_main_table mt-4</attribute>
+        </xpath>
+        <xpath expr="//div[@id='total']//table" position="attributes">
+            <attribute name="class">table table-sm</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_description" class="text-start">Product name</th>
+        </xpath>
+
+        <!-- Line index number -->
+        <xpath expr="//th[@name='th_description']" position="before">
+            <th name="th_si_no" class="text-start">SI No.</th>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="before">
+            <td name="si_no">
+                <span t-esc="line_index + 1"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//t[@t-set='information_block']" position="replace">
+            <t t-set="information_block">
+                <t t-if="doc.partner_shipping_id != doc.partner_invoice_id">
+                    <strong style="font-size:14px;">Shipping Address:</strong>
+                    <div t-field="doc.partner_shipping_id"
+                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
+                         style="font-size:14px;"
+                    />
+                </t>
+            </t>
+            <t t-set="information_block_2">
+                <strong style="font-size:14px;">
+                    <t t-if="doc.partner_shipping_id == doc.partner_invoice_id">
+                                Invoicing and Shipping Address:
+                            </t>
+                            <t t-else="">
+                                Invoicing Address:
+                            </t>
+                        </strong>
+                        <div t-field="doc.partner_invoice_id"
+                             t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
+                             style="font-size:14px;"
+                        />
+            </t>
+        </xpath>
+    </template>
+
+    <template
+            id="bv_inherit_gst_report_saleorder_document_inherit"
+            inherit_id="l10n_in_sale.gst_report_saleorder_document_inherit"
+    >
+        <xpath expr="//h6" position="attributes">
+            <attribute name="style">font-size:14px;</attribute>
+        </xpath>
+    </template>
+
+</odoo>

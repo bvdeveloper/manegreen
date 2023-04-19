@@ -8,7 +8,9 @@
         >
             <xpath expr="//div[hasclass('page')]" position="after">
                 <br/>
-                <table border="0" style="width:100%;margin:0px auto;background:white;border:0px solid #ffffff;">
+                <table border="0"
+                       style="width:100%;margin:0px auto;background:white;border:0px solid #ffffff;font-size:14px;"
+                >
                     <tbody>
                         <tr>
                             <td style="padding:0.5rem"><strong>Created By: </strong></td>

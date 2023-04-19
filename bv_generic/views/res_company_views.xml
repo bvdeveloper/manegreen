@@ -13,6 +13,27 @@
                         groups="base.group_no_one"
                 />
             </xpath>
+            <xpath expr="//page[@name='general_info']" position="after">
+                <page string="Factory Address" name="factory_address_info">
+                    <group>
+                        <group>
+                            <field name="factory_address"/>
+                            <field name="factory_pan_number"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Company Bank Details" name="company_bank_details">
+                    <group>
+                        <group>
+                            <field name="bank_account_name"/>
+                            <field name="bank_name"/>
+                            <field name="bank_ifsc_code"/>
+                            <field name="bank_branch"/>
+                            <field name="bank_branch_address"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 </odoo>
