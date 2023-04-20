@@ -22,7 +22,7 @@
         </xpath>
         <xpath expr="//p[@id='fiscal_position_remark']" position="after">
             <div class="row justify-content-end last-page"
-                 style="margin-top:2rem; page-break-inside: avoid; font-size:14px;"
+                 style="margin-top:0.75rem; page-break-inside: avoid; font-size:14px;"
             >
                 <div class="col-4">
                     <div class="row justify-content-between" style="margin-bottom:45px; text-align:center;">
