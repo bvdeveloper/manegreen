@@ -11,3 +11,10 @@ class AccountMove(models.Model):
     checked_by = fields.Many2one('res.users', required=False)
     verified_by = fields.Many2one('res.users', required=False)
     auth_sign = fields.Char()
+
+
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
+
+    move_comment = fields.Char(string="Narration", related="move_id.comment", store=True)
+
