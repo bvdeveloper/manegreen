@@ -23,10 +23,10 @@
 
         <!-- Line index number -->
         <xpath expr="//th[@name='th_description']" position="before">
-            <th name="th_si_no" class="text-start">SI No.</th>
+            <th name="th_si_no" class="text-center">S.No</th>
         </xpath>
         <xpath expr="//td[@name='td_name']" position="before">
-            <td name="si_no">
+            <td name="si_no" class="text-center">
                 <span t-esc="line_index + 1"/>
             </td>
         </xpath>

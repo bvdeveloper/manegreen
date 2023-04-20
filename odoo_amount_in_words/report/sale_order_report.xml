@@ -2,6 +2,20 @@
 <odoo>
     <template id="sale_report_amount_in_words_inherit" inherit_id="sale.report_saleorder_document">
         <xpath expr="//div[@class='clearfix']" position="after">
+            <style>
+                table {
+                border:1px solid #dee2e6 !important;
+                }
+                tr, td, th {
+                border:1px solid #dee2e6 !important;
+                }
+                .table > :not(:first-child){
+                border-top: 1px solid currentColor !important;
+                }
+                .border-black td, .border-black th, div#total table tr.o_subtotal td, div#total table tr.o_total td{
+                border:1px solid #dee2e6 !important;
+                }
+            </style>
             <div style="padding-top:20px;">
                 <p><span><strong>Total (In Words): </strong></span><span t-field="doc.amount_words"/></p>
             </div>

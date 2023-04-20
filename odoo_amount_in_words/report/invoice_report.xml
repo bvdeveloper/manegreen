@@ -1,69 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
      <template id="invoice_report_amount_in_words_inherit" inherit_id="account.report_invoice_document">
-            <xpath expr="//div[hasclass('clearfix')]" position="after">
-                 <div style="padding-top:20px; padding-bottom:20px;">
-                    <p><span><strong>Total (In Words): </strong></span><span t-field="o.amount_words"/></p>
-                </div>
-            </xpath>
-            <xpath expr="//div[@id='qrcode']" position="after">
-                <div class="row justify-content-end last-page"
-                     style="margin-top:0.75rem; font-size:14px;"
-                >
-                    <div class="col-12">
-                        <div class="row" t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')">
-<!--                            <div class="col-2"/>-->
-                            <div class="col-md-12" style="margin-bottom:45px;">
-                                <div class="row">
-                                    <table border="0" class="table table-sm o_main_table text-start">
-                                        <tr><td colspan="2"><strong>Bank Details: </strong></td></tr>
-                                        <tr>
-                                            <th>Account Name :</th>
-                                            <td>
-                                                <span t-field="o.company_id.bank_account_name"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Bank Name :</th>
-                                            <td>
-                                                <span t-field="o.company_id.bank_name"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>IFSC Code :</th>
-                                            <td>
-                                                <span t-field="o.company_id.bank_ifsc_code"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Branch :</th>
-                                            <td>
-                                                <span t-field="o.company_id.bank_branch"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Branch Address :</th>
-                                            <td>
-                                                <span t-field="o.company_id.bank_branch_address"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" style="page-break-inside: avoid;">
-                            <div class="col-8"/>
-                            <div class="col-4">
-                                <div class="row justify-content-between" style="margin-bottom:45px; text-align:center;">
-                                    <p>For <span class="text-center" t-field="o.company_id.name"/></p>
-                                </div>
-                                <div class="row justify-content-between" style="margin-bottom:15px; text-align:center;">
-                                    <p><span class="text-center">Authorized Signatory</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </xpath>
-        </template>
+         <xpath expr="//div[hasclass('clearfix')]" position="attributes">
+             <attribute name="class">clearfix</attribute>
+         </xpath>
+         <xpath expr="//div[hasclass('clearfix')]" position="after">
+             <div style="padding-top:20px; padding-bottom:20px;">
+                 <p>
+                     <span>
+                         <strong>Total (In Words):</strong>
+                     </span>
+                     <span t-field="o.amount_words"/>
+                 </p>
+             </div>
+             <div>
+                 <t t-call="odoo_amount_in_words.bv_hsn_invoice_report"/>
+             </div>
+         </xpath>
+         <xpath expr="//div[@id='qrcode']" position="after">
+             <div class="row justify-content-end last-page"
+                  style="margin-top:0.75rem; font-size:14px;"
+             >
+                 <div class="col-12">
+                     <div class="row" t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')">
+                         <!--                            <div class="col-2"/>-->
+                         <div class="col-md-12" style="margin-bottom:45px;">
+                             <div class="row">
+                                 <table border="0" class="table table-sm o_main_table text-start">
+                                     <tr>
+                                         <td colspan="2">
+                                             <strong>Bank Details:</strong>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <th>Account Name :</th>
+                                         <td>
+                                             <span t-field="o.company_id.bank_account_name"/>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <th>Bank Name :</th>
+                                         <td>
+                                             <span t-field="o.company_id.bank_name"/>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <th>IFSC Code :</th>
+                                         <td>
+                                             <span t-field="o.company_id.bank_ifsc_code"/>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <th>Branch :</th>
+                                         <td>
+                                             <span t-field="o.company_id.bank_branch"/>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <th>Branch Address :</th>
+                                         <td>
+                                             <span t-field="o.company_id.bank_branch_address"/>
+                                         </td>
+                                     </tr>
+                                 </table>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="row" style="page-break-inside: avoid;">
+                         <div class="col-8"/>
+                         <div class="col-4">
+                             <div class="row justify-content-between" style="margin-bottom:45px; text-align:center;">
+                                 <p>For
+                                     <span class="text-center" t-field="o.company_id.name"/>
+                                 </p>
+                             </div>
+                             <div class="row justify-content-between" style="margin-bottom:15px; text-align:center;">
+                                 <p>
+                                     <span class="text-center">Authorized Signatory</span>
+                                 </p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </xpath>
+     </template>
+
+
+    <template id="bv_hsn_invoice_report">
+        <style>
+            table {
+            border:1px solid #dee2e6 !important;
+            }
+            tr, td, th {
+            border:1px solid #dee2e6 !important;
+            }
+            .table > :not(:first-child){
+            border-top: 1px solid currentColor !important;
+            }
+            .border-black td, .border-black th, div#total table tr.o_subtotal td, div#total table tr.o_total td{
+            border:1px solid #dee2e6 !important;
+            }
+            .gst_tbody strong{
+            color:#505050 !important;
+            }
+            .table > :not(caption) > * > *{
+                padding:0.25rem 0.25rem !important;
+            }
+
+        </style>
+        <table class="table table-bordered" style="table-layout:auto">
+            <thead>
+                <tr>
+                    <td rowspan="2" class="text-center align-middle">
+                        <b>S.No</b>
+                    </td>
+                    <td class="text-center align-middle" colspan="4" rowspan="2">
+                        <b>Product name</b>
+                    </td>
+                    <td class="text-center align-middle" colspan="4" rowspan="2">
+                        <b>Taxable Value</b>
+                    </td>
+
+<!--                    <td class="text-start" rowspan="2" colspan="4">-->
+<!--                        <b>Quantity</b>-->
+<!--                    </td>-->
+<!--                    <td class="text-end" rowspan="2" colspan="4">-->
+<!--                        <b>Rate</b>-->
+<!--                    </td>-->
+<!--                    <td class="text-center" rowspan="2" colspan="4">-->
+<!--                        <b>DISC%</b>-->
+<!--                    </td>-->
+                    <td class="text-center align-middle" colspan="4">
+                        <b>CGST</b>
+                    </td>
+                    <td class="text-center align-middle" colspan="4">
+                        <b>SGST</b>
+                    </td>
+<!--                    <td class="text-center" colspan="4">-->
+<!--                        <b>IGST</b>-->
+<!--                    </td>-->
+                    <td class="text-center align-middle" rowspan="2" colspan="4">
+                        <b>Total Tax Amount</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center align-middle">
+                        <b>Rate</b>
+                    </td>
+                    <td colspan="2" class="text-center align-middle">
+                        <b>Amount</b>
+                    </td>
+                    <td colspan="2" class="text-center align-middle">
+                        <b>Rate</b>
+                    </td>
+                    <td colspan="2" class="text-center align-middle">
+                        <b>Amount</b>
+                    </td>
+<!--                    <td colspan="2" align="center">-->
+<!--                        <b>Rate</b>-->
+<!--                    </td>-->
+<!--                    <td colspan="2" align="center">-->
+<!--                        <b>Amount</b>-->
+<!--                    </td>-->
+                </tr>
+            </thead>
+            <t t-set="i" t-value="1"/>
+            <t t-set="val" t-value="0"/>
+            <t t-set="currency_symbol" t-value="o.currency_id.symbol"/>
+            <t t-set="untaxed_amount" t-value="0"/>
+            <t t-set="total_sgst" t-value="0"/>
+            <t t-set="total_cgst" t-value="0"/>
+            <t t-set="total_tax_amount" t-value="0"/>
+            <tbody class="gst_tbody">
+                <t t-foreach="o.get_hsn_code(hsn)" t-as="hsn_data">
+                    <tr>
+                        <td colspan="32" style="font-size:15px;">
+                            <strong>HSN/SAC Code :
+                                <span t-esc="hsn_data"/>
+                            </strong>
+                        </td>
+                        <tr t-foreach="o.invoice_line_ids" t-as="line">
+                            <t t-if="hsn_data == line.product_id.l10n_in_hsn_code">
+                                <td class="text-center">
+                                    <span t-esc="i"/>
+                                    <t t-set="i" t-value="i+1"/>
+                                </td>
+                                <td colspan="4" class="text-start">
+                                    <span t-field="line.product_id.name"/>
+                                </td>
+                                <td colspan="4" class="text-end">
+                                    <span t-field="line.price_subtotal"/>
+                                </td>
+<!--                                <td colspan="4" class="text-center">-->
+<!--                                    <span t-field="line.quantity"/>-->
+<!--                                </td>-->
+<!--                                <td colspan="4" class="text-right">-->
+<!--                                    <span t-field="line.price_unit"/>-->
+<!--                                </td>-->
+<!--                                <td colspan="4" class="text-center">-->
+<!--                                    <span t-field="line.discount"/>-->
+<!--                                </td>-->
+                                <td colspan="2" class="text-start">
+                                    <span t-esc="round(o.get_gst(o.id,line.product_id.id)[0],2)"/>
+                                    <span>%</span>
+                                </td>
+                                <td colspan="2" class="text-end">
+                                    <span t-esc="currency_symbol"/>
+                                    <span t-esc="round(o.get_gst(o.id,line.product_id.id)[1],2)"/>
+                                </td>
+                                <td colspan="2" class="text-start">
+                                    <span t-esc="round(o.get_gst(o.id,line.product_id.id)[0],2)"/>
+                                    <span>%</span>
+                                </td>
+                                <td colspan="2" class="text-end">
+                                    <span t-esc="currency_symbol"/>
+                                    <span t-esc="round(o.get_gst(o.id,line.product_id.id)[1],2)"/>
+                                </td>
+<!--                                <td colspan="2" class="text-center">-->
+<!--                                    <span t-esc="round(o.get_igst(o.id,line.product_id.id)[0],2)"/>-->
+<!--                                    <span>%</span>-->
+<!--                                </td>-->
+<!--                                <td colspan="2" class="text-center">-->
+<!--                                    <span t-esc="round(o.get_igst(o.id,line.product_id.id)[1],2)"/>-->
+<!--                                </td>-->
+                                <td colspan="4" class="text-end">
+                                    <span t-esc="currency_symbol"/>
+                                    <span t-esc="round(o.get_gst(o.id,line.product_id.id)[1] + o.get_gst(o.id,line.product_id.id)[1],2)"/>
+                                    <t t-set="untaxed_amount"
+                                       t-value="round(untaxed_amount + round(line.price_subtotal,2),2)"/>
+                                    <t t-set="total_sgst"
+                                       t-value="round(total_sgst + round(o.get_gst(o.id,line.product_id.id)[1],2),2)"/>
+                                    <t t-set="total_cgst"
+                                       t-value="round(total_cgst + round(o.get_gst(o.id,line.product_id.id)[1],2),2)"/>
+                                    <t t-set="total_tax_amount"
+                                       t-value="round(total_tax_amount + round(o.get_gst(o.id,line.product_id.id)[1] + o.get_gst(o.id,line.product_id.id)[1],2),2)"
+                                    />
+                                </td>
+                            </t>
+                        </tr>
+                    </tr>
+                </t>
+                <tr>
+                    <td colspan="5" class="text-end"><strong>Total</strong></td>
+                    <td colspan="4" class="text-end">
+                        <strong>
+                            <span t-esc="currency_symbol"/>
+                            <span t-esc="untaxed_amount"/>
+                        </strong>
+                    </td>
+<!--                    <td colspan="1"/>-->
+                    <td colspan="4" class="text-end">
+                        <strong>
+                            <span t-esc="currency_symbol"/>
+                            <span t-esc="total_sgst"/>
+                        </strong>
+                    </td>
+<!--                    <td colspan="1"/>-->
+                    <td colspan="4" class="text-end">
+                        <strong>
+                            <span t-esc="currency_symbol"/>
+                            <span t-esc="total_cgst"/>
+                        </strong>
+                    </td>
+                    <td colspan="4" class="text-end">
+                        <strong>
+                            <span t-field="o.amount_tax"/>
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="padding-top:10px; padding-bottom:10px;">
+            <p>
+                <span>
+                    <strong>Total Tax (In Words):</strong>
+                </span>
+                <span t-field="o.total_tax_amount_in_words"/>
+            </p>
+        </div>
+    </template>
 </odoo>

@@ -44,12 +44,12 @@
 
         <!-- Line index number -->
         <xpath expr="//th[@name='th_description']" position="before">
-            <th name="th_si_no" style="text-align:left;">
-                <strong>SI No.</strong>
+            <th name="th_si_no" class="text-center">
+                <strong>S.No</strong>
             </th>
         </xpath>
         <xpath expr="//tbody//td[1]" position="before">
-            <td name="si_no">
+            <td name="si_no" class="text-center">
                 <span t-esc="line_index + 1"/>
             </td>
         </xpath>
@@ -82,11 +82,11 @@
         <!-- Line index number -->
         <xpath expr="//th[@name='th_description']" position="before">
             <th name="th_si_no" style="text-align:left;">
-                <strong>SI No.</strong>
+                <strong>S.No</strong>
             </th>
         </xpath>
         <xpath expr="//tbody//td[1]" position="before">
-            <td name="si_no">
+            <td name="si_no" class="text-center">
                 <span t-esc="order_line_index + 1"/>
             </td>
         </xpath>
