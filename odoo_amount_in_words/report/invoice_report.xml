@@ -39,6 +39,12 @@
                                          </td>
                                      </tr>
                                      <tr>
+                                         <th>Account Number :</th>
+                                         <td>
+                                             <span t-field="o.company_id.bank_account_number"/>
+                                         </td>
+                                     </tr>
+                                     <tr>
                                          <th>Bank Name :</th>
                                          <td>
                                              <span t-field="o.company_id.bank_name"/>
@@ -109,7 +115,10 @@
             }
 
         </style>
-        <table class="table table-bordered" style="table-layout:auto">
+        <table class="table table-bordered"
+               style="table-layout:auto"
+               t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')"
+        >
             <thead>
                 <tr>
                     <td rowspan="2" class="text-center align-middle">
@@ -271,7 +280,10 @@
                 </tr>
             </tbody>
         </table>
-        <div style="padding-top:10px; padding-bottom:10px;">
+        <div
+                style="padding-top:10px; padding-bottom:10px;"
+                t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')"
+        >
             <p>
                 <span>
                     <strong>Total Tax (In Words):</strong>

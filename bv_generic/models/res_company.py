@@ -10,6 +10,7 @@ class ResCompany(models.Model):
     factory_pan_number = fields.Char(string="PAN Number")
     # Company Bank Details
     bank_account_name = fields.Char(string="Account Name")
+    bank_account_number = fields.Char(string="Account Number")
     bank_name = fields.Char(string="Bank Name")
     bank_ifsc_code = fields.Char(string="IFSC Code")
     bank_branch = fields.Char(string="Branch")
