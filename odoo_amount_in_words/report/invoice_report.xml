@@ -464,21 +464,34 @@
                             <span t-esc="untaxed_amount"/>
                         </strong>
                     </td>
-                    <td colspan="4" class="text-end">
-                        <strong>
-                            <span t-esc="currency_symbol"/>
-                            <span t-esc="total_sgst"/>
-                        </strong>
-                    </td>
-                    <td colspan="4" class="text-end">
-                        <strong>
-                            <span t-esc="currency_symbol"/>
-                            <span t-esc="total_cgst"/>
-                        </strong>
-                    </td>
+                    <t t-if="total_sgst > 0.0">
+                        <td colspan="4" class="text-end">
+                            <strong>
+                                <span t-esc="currency_symbol"/>
+                                <span t-esc="total_sgst"/>
+                            </strong>
+                        </td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="4" class="text-center">
+                            <span>-</span>
+                        </td>
+                    </t>
+                    <t t-if="total_cgst > 0.0">
+                        <td colspan="4" class="text-end">
+                            <strong>
+                                <span t-esc="currency_symbol"/>
+                                <span t-esc="total_cgst"/>
+                            </strong>
+                        </td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="4" class="text-center">
+                            <span>-</span>
+                        </td>
+                    </t>
                     <t t-if="total_igst > 0.0">
                         <td colspan="4" class="text-end">
-
                             <strong>
                                 <span t-esc="currency_symbol"/>
                                 <span t-esc="total_igst"/>
