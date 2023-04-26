@@ -390,7 +390,7 @@
                                     <span> - </span>
                                 </span>
                             </td>
-                            <td colspan="2" class="text-end">
+                            <td colspan="2" class="text-center">
                                 <span t-if="o.get_gst(o.id,line.product_id.id)[1] > 0.0">
                                     <span t-esc="currency_symbol"/>
                                     <span t-esc="round(o.get_gst(o.id,line.product_id.id)[1],2)"/>
@@ -408,7 +408,7 @@
                                     <span> - </span>
                                 </span>
                             </td>
-                            <td colspan="2" class="text-end">
+                            <td colspan="2" class="text-center">
                                 <span t-if="o.get_gst(o.id,line.product_id.id)[1] > 0.0">
                                     <span t-esc="currency_symbol"/>
                                     <span t-esc="round(o.get_gst(o.id,line.product_id.id)[1],2)"/>
