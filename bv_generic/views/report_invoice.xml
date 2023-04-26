@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="bv_l10n_in_report_invoice_document_inherit"
+              inherit_id="l10n_in.l10n_in_report_invoice_document_inherit">
+        <xpath expr="//t[@class='mt16']" position="replace">
+            <div name="pan_number" t-if="o.partner_id.pan_card">
+                <span>
+                    <strong>PAN No.:</strong>
+                    <span t-field="o.partner_id.pan_card"/>
+                </span>
+                <t t-if="o.company_id.account_fiscal_country_id.code == 'IN' and o.l10n_in_state_id" class="mt16">
+                    <br/>
+                    <span>
+                        <strong>Place of supply:</strong>
+                        <span t-esc="o.l10n_in_state_id.name"/>
+                    </span>
+                </t>
+            </div>
+        </xpath>
+    </template>
     <template id="bv_report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='informations']//div[@name='due_date']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
         <xpath expr="//div[@name='origin']" position="after">
             <div class="col-auto col-3 mw-100 mb-2" t-if="o.vehicle_number" name="vehicle_number">
                 <strong>Vehicle Number:</strong>
@@ -119,12 +140,12 @@
                                     <strong>Billing Address: </strong>
                                     <t t-esc="address"/>
                                 </span>
-                                <div name="pan_number" t-if="o.partner_id.pan_card">
-                                    <span>
-                                        <strong>PAN No.:</strong>
-                                        <span t-field="o.partner_id.pan_card"/>
-                                    </span>
-                                </div>
+<!--                                <div name="pan_number" t-if="o.partner_id.pan_card">-->
+<!--                                    <span>-->
+<!--                                        <strong>PAN No.:</strong>-->
+<!--                                        <span t-field="o.partner_id.pan_card"/>-->
+<!--                                    </span>-->
+<!--                                </div>-->
                             </div>
                         </t>
                     </div>
@@ -154,6 +175,36 @@
 
     <!-- External Layout Standard -->
     <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[hasclass('zero_min_height')]" position="before">
+            <div t-if="doc_model in ['account.move']" class="first-page">
+                <div t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')"
+                     class="row">
+                    <div class="col-5"/>
+                    <div class="col-2" style="font-size:18px;">
+                        <strong> Tax Invoice </strong>
+                    </div>
+                    <div class="col-5"/>
+                </div>
+            </div>
+            <div t-if="doc_model in ['sale.order']" class="first-page">
+                <div class="row">
+                    <div class="col-5"/>
+                    <div class="col-2" style="font-size:18px;">
+                        <strong> Sales Order </strong>
+                    </div>
+                    <div class="col-5"/>
+                </div>
+            </div>
+            <div t-if="doc_model in ['purchase.order']" class="first-page">
+                <div class="row">
+                    <div class="col-5"/>
+                    <div class="col-2" style="font-size:18px;">
+                        <strong> Purchase Order </strong>
+                    </div>
+                    <div class="col-5"/>
+                </div>
+            </div>
+        </xpath>
         <xpath expr="//div[@name='company_address']" position="replace">
             <div class="first-page">
                 <div class="row" style="font-size:14px;">

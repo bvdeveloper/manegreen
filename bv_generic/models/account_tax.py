@@ -54,7 +54,7 @@ class AccountTax(models.Model):
         for tax_group_vals in tax_group_vals_list:
             tax_group = tax_group_vals['tax_group']
 
-            subtotal_title = tax_group.preceding_subtotal or _("Untaxed Amount")
+            subtotal_title = tax_group.preceding_subtotal or _("Taxable Amount")
             sequence = tax_group.sequence
 
             subtotal_order[subtotal_title] = min(subtotal_order.get(subtotal_title, float('inf')), sequence)
