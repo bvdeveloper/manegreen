@@ -476,12 +476,21 @@
                             <span t-esc="total_cgst"/>
                         </strong>
                     </td>
-                    <td colspan="4" class="text-end">
-                        <strong>
-                            <span t-esc="currency_symbol"/>
-                            <span t-esc="total_igst"/>
-                        </strong>
-                    </td>
+                    <t t-if="total_igst > 0.0">
+                        <td colspan="4" class="text-end">
+
+                            <strong>
+                                <span t-esc="currency_symbol"/>
+                                <span t-esc="total_igst"/>
+                            </strong>
+                        </td>
+                    </t>
+                    <t t-else="">
+                        <td colspan="4" class="text-center">
+                            <span>-</span>
+                        </td>
+                    </t>
+
                     <td colspan="4" class="text-center">
                         <strong>
 <!--                            <span t-esc="currency_symbol"/>-->
