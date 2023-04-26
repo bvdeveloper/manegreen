@@ -42,7 +42,7 @@
                 </t>
             </t>
             <t t-set="information_block_2">
-                <strong style="font-size:14px;">
+                <strong style="font-size:14px; display:none;">
                     <t t-if="doc.partner_shipping_id == doc.partner_invoice_id">
                                 Invoicing and Shipping Address:
                             </t>
@@ -52,7 +52,7 @@
                         </strong>
                         <div t-field="doc.partner_invoice_id"
                              t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
-                             style="font-size:14px;"
+                             style="font-size:14px; display:none;"
                         />
             </t>
         </xpath>

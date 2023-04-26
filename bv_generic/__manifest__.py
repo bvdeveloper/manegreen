@@ -14,7 +14,7 @@
     'depends': [
         'base', 'web', 'stock', 'stock_barcode', 'product', 'purchase', 'account',
         'sign', 'bi_print_journal_entries', 'l10n_in', 'report_context', 'l10n_in_sale',
-        'l10n_in_purchase',
+        'l10n_in_purchase', 'l10n_in',
     ],
 
     'data': [
