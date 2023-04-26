@@ -140,12 +140,14 @@
                                     <strong>Billing Address: </strong>
                                     <t t-esc="address"/>
                                 </span>
-<!--                                <div name="pan_number" t-if="o.partner_id.pan_card">-->
-<!--                                    <span>-->
-<!--                                        <strong>PAN No.:</strong>-->
-<!--                                        <span t-field="o.partner_id.pan_card"/>-->
-<!--                                    </span>-->
-<!--                                </div>-->
+                                <t t-if="doc_model in ['sale.order', 'purchase.order']">
+                                    <div name="pan_number" t-if="o.partner_id.pan_card">
+                                        <span>
+                                            <strong>PAN No.:</strong>
+                                            <span t-field="o.partner_id.pan_card"/>
+                                        </span>
+                                    </div>
+                                </t>
                             </div>
                         </t>
                     </div>
