@@ -312,7 +312,10 @@
             }
 
         </style>
-        <table class="table table-sm o_main_table text-start">
+        <table class="table table-sm o_main_table text-start"
+               t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')"
+               style="table-layout:auto"
+        >
             <thead>
                 <tr>
                     <td rowspan="2" class="text-center align-middle">
@@ -513,7 +516,9 @@
                 </tr>
             </tbody>
         </table>
-        <div style="padding-top:20px; padding-bottom:20px;">
+        <div style="padding-top:20px; padding-bottom:20px;"
+             t-if="o.move_type in ('out_invoice', 'out_refund', 'out_receipt')"
+        >
             <p>
                 <span>
                     <strong>Total Tax (In Words):</strong>
