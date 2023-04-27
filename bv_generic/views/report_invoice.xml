@@ -79,6 +79,18 @@
                 <span><strong style="font-size:0.90rem;">Invoice For original Recipients</strong></span>
             </t>
         </xpath>
+        <xpath expr="//t[@t-set='information_block']//div[@t-field='o.partner_shipping_id']"
+               position="attributes">
+            <attribute name="t-options">
+                {"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}
+            </attribute>
+        </xpath>
+        <xpath expr="//t[@t-set='address']//address[@t-field='o.partner_id']"
+               position="attributes">
+            <attribute name="t-options">
+                {"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}
+            </attribute>
+        </xpath>
 
         <!--- Stamp and signature -->
 <!--        <xpath expr="//div[@t-if='not is_html_empty(o.narration)']" position="after">-->

@@ -30,13 +30,18 @@
                 <span t-esc="line_index + 1"/>
             </td>
         </xpath>
+        <xpath expr="//t[@t-set='address']//div[@t-field='doc.partner_id']" position="attributes">
+            <attribute name="t-options">
+                {"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}
+            </attribute>
+        </xpath>
 
         <xpath expr="//t[@t-set='information_block']" position="replace">
             <t t-set="information_block">
                 <t t-if="doc.partner_shipping_id != doc.partner_invoice_id">
                     <strong style="font-size:14px;">Shipping Address:</strong>
                     <div t-field="doc.partner_shipping_id"
-                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
+                         t-options='{"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}'
                          style="font-size:14px;"
                     />
                 </t>
@@ -51,7 +56,7 @@
                             </t>
                         </strong>
                         <div t-field="doc.partner_invoice_id"
-                             t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
+                             t-options='{"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}'
                              style="font-size:14px; display:none;"
                         />
             </t>
