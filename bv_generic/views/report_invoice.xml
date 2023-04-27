@@ -141,7 +141,18 @@
                                     <t t-esc="address"/>
                                 </span>
                                 <t t-if="doc_model in ['sale.order', 'purchase.order']">
-                                    <div name="pan_number" t-if="o.partner_id.pan_card">
+                                    <div name="pan_number"
+                                         t-if="o.partner_id.pan_card and doc_model == 'sale.order'"
+                                         style="margin-top:-1rem;"
+                                    >
+                                        <span>
+                                            <strong>PAN No.:</strong>
+                                            <span t-field="o.partner_id.pan_card"/>
+                                        </span>
+                                    </div>
+                                    <div name="pan_number"
+                                         t-if="o.partner_id.pan_card and doc_model == 'purchase.order'"
+                                    >
                                         <span>
                                             <strong>PAN No.:</strong>
                                             <span t-field="o.partner_id.pan_card"/>
@@ -172,6 +183,9 @@
                     </div>
                 </t>
             </div>
+        </xpath>
+        <xpath expr="//div[@name='address']" position="attributes">
+            <attribute name="style">margin-bottom:0px;</attribute>
         </xpath>
     </template>
 
