@@ -110,6 +110,12 @@
                 {"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}
             </attribute>
         </xpath>
+        <xpath expr="//th[@name='th_expected_date']//strong" position="replace">
+            <strong>HSN/SAC</strong>
+        </xpath>
+        <xpath expr="//span[@t-field='order_line.date_planned']" position="replace">
+            <span t-field="order_line.product_id.l10n_in_hsn_code"/>
+        </xpath>
     </template>
 
     <template
