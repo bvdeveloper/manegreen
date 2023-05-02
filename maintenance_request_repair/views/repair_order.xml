@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <record id="repair_order_form_view" model="ir.ui.view">
         <field name="name">repair.order.form (in maintenance_request_repair)</field>
         <field name="model">repair.order</field>
@@ -20,6 +19,5 @@
                 </div>
             </field>
         </record>
-
     </data>
 </odoo>
