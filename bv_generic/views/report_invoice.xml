@@ -143,7 +143,7 @@
     </template>
     <template id="address_layout_inherit" inherit_id="web.address_layout">
         <xpath expr="//t[@t-if='address']" position="replace">
-            <div class="row" style="margin-top: 11.75rem !important; font-size:14px;">
+            <div class="row" style="margin-top: 7.75rem !important; font-size:14px;">
                 <t t-if="address">
                     <div class="col-5">
                         <t t-if="address">
