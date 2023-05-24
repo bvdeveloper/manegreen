@@ -4,6 +4,9 @@
         <xpath expr="//p[@t-field='o.date_approve']" position="replace">
              <p t-esc="o.date_approve.strftime('%d-%m-%Y')" class="m-0"/>
         </xpath>
+        <xpath expr="//p[@t-field='o.date_order']" position="replace">
+            <p t-esc="o.date_order.strftime('%d-%m-%Y')" class="m-0"/>
+        </xpath>
         <xpath expr="//th[@name='th_date_req']//strong" position="replace">
             <strong>HSN/SAC</strong>
         </xpath>
